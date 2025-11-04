@@ -1,3 +1,3 @@
 Aceh Cinema Website
 
-<a href="https://acehcinema.com">acehcinema.com</a>
+<a target="_blank" href="https://acehcinema.com">acehcinema.com</a>
