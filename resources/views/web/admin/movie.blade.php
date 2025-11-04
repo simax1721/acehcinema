@@ -21,7 +21,7 @@
             <h6 class="mt-2 font-weight-bold text-primary">Data Film</h6>
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-striped table-responsive" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>Title</th>

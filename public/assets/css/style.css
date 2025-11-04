@@ -324,11 +324,19 @@ section.movies .movie-category i:hover {
   color: var(--third-color);
 }
 
+.movie-title {
+  /* font-size: 13px; */
+  font-weight: bolder;
+  color: #ccc;
+  margin: 6px 0 2px;
+}
+
 .movie-meta {
   font-size: 13px;
   color: #ccc;
   margin: 6px 0 2px;
 }
+
 
 .movie-genre {
   font-size: 13px;

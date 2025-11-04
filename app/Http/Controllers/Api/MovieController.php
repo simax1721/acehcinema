@@ -199,20 +199,24 @@ class MovieController extends Controller
         $data = Movie::all();
         if ($request->ajax()) {
             return DataTables::of($data)
-                ->addColumn('id', function ($data) {
-                    return $data->id;
-                })
-                ->addColumn('title', function ($data) {
-                    return $data->title;
-                })
-                ->addColumn('category', function ($data) {
-                    return $data->category;
-                })
-                ->addColumn('views', function ($data) {
-                    return $data->views;
-                })
-                ->addColumn('release_date', function ($data) {
-                    return $data->release_date;
+                // ->addColumn('id', function ($data) {
+                //     return $data->id;
+                // })
+                // ->addColumn('title', function ($data) {
+                //     return $data->title;
+                // })
+                // ->addColumn('category', function ($data) {
+                //     return $data->category;
+                // })
+                // ->addColumn('views', function ($data) {
+                //     return $data->views;
+                // })
+                // ->addColumn('release_date', function ($data) {
+                //     return $data->release_date;
+                // })
+                ->addColumn('poster', function ($data) {
+                    $img = '<a target="_blank" href="'.$data->poster.'"><img src="'.$data->poster.'" alt="" style="max-width: 50px"></a>';
+                    return $img;
                 })
                 ->addColumn('created_at', function ($data) {
                     return $data->created_at;
@@ -223,7 +227,7 @@ class MovieController extends Controller
                             <a href="javascript:void(0)" id="btn-delete" data-id="' . $data->id . '" class="btn btn-sm btn-danger">Delete</a>
                             </div>';
                 })
-                ->rawColumns(['action', 'status'])
+                ->rawColumns(['action', 'poster'])
                 ->addIndexColumn()
                 ->make(true);
         }

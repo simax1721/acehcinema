@@ -53,11 +53,11 @@ const Movie = {
         },
         data: { title, category },
         beforeSend: () => {
-          $('#store')
-            .addClass('disabled')
-            .html('<i class="fa-solid fa-spinner fa-spin"></i>');
-            // $(selector).addClass(className);
-            // $(selector).removeClass(className);
+        $('#store')
+          .addClass('disabled')
+          .html('<i class="fa-solid fa-spinner fa-spin"></i>');
+          // $(selector).addClass(className);
+          // $(selector).removeClass(className);
         },
         complete: () => {
           $('#store')
@@ -137,8 +137,8 @@ const Movie = {
         'Authorization': 'Bearer ' + token
       },
       success: (res) => {
-        $('#thumb-img').attr('src', `/uploads/${res.thumbnail}`);
-        $('#poster-img').attr('src', `/uploads/${res.poster}`);
+        $('#thumb-img').attr('src', res.thumbnail);
+        $('#poster-img').attr('src', res.poster);
 
         $('#title').val(res.title);
         $('#category').val(res.category);
@@ -224,7 +224,7 @@ function movieUpdate(token, movieId, action) {
       success: (res) => {
         console.log(res);
         Movie.movieShow(token, movieId);
-        // sweetAlertNorm();
+        sweetAlertNorm(res.message.title, res.message.text, res.message.icon);
       },
       error: (xhr) => {
         console.log(xhr);

@@ -8,6 +8,7 @@
             <a href="#" class="need-login"><i class="fa-solid fa-plus"></i></a>
             <a href="#" class="need-login"><i class="fa-solid fa-thumbs-up"></i></a>
           </div>
+          <p class="movie-title">Lorem ipsum dolor sit amet consectetur</p>
           <p class="movie-meta"></p>
           <p class="movie-genre"></p>
         </div>

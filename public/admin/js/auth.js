@@ -107,7 +107,7 @@ const AdminAuth = {
       data: { _token: $('meta[name="csrf-token"]').attr('content') },
       beforeSend: () => {
         $('#admin-logout-btn')
-          .addclass('disabled')
+          .addClass('disabled')
           .html('<i class="fa-solid fa-spinner fa-spin"></i>');
       },
       complete: () => {

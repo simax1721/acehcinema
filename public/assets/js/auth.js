@@ -64,7 +64,7 @@ const Auth = {
         beforeSend: () => {
           // setting a timeout
           $('#login-btn').attr('disabled', '');
-          $('#login-btn').html('<i class="fa-solid fa-spinner"></i>');
+          $('#login-btn').html('<i class="fa-solid fa-spinner fa-spin"></i>');
         },
         complete:  () => { 
           $('#login-btn').removeAttr('disabled', '');
@@ -107,7 +107,7 @@ const Auth = {
         beforeSend: () => {
           // setting a timeout
           $('#register-btn').attr('disabled', '');
-          $('#register-btn').html('<i class="fa-solid fa-spinner"></i>');
+          $('#register-btn').html('<i class="fa-solid fa-spinner fa-spin"></i>');
         },
         complete:  () => { 
           $('#register-btn').removeAttr('disabled', '');
