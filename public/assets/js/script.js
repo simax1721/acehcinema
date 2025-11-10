@@ -404,3 +404,96 @@ function loadMovies(currentPage, url, movieList, loadMoreBtn) {
         });
     });
 }
+
+
+function searchMovie() {
+  
+  
+  const movieList = $('#movie-list');
+  let currentPage = 1;
+  let lastPage = 1;
+  let typingTimer;
+  const loadMoreBtn = $('#load-more');
+
+  $('#search').on('input', function() {
+      clearTimeout(typingTimer);
+      const keyword = $(this).val().trim();
+
+      movieList.empty();
+      let url = `/api/movies/search?search=${keyword}&`;
+
+      typingTimer = setTimeout(() => {
+          if (keyword.length > 0) {
+              console.log('Kirim pencarian:', keyword);
+
+
+              // 🔹 muat halaman pertama
+              loadMovies(currentPage, url, movieList, loadMoreBtn)
+                  .then(lp => lastPage = lp)
+                  .catch(console.error);
+
+              clearSearch('show');
+          } else {
+              movieList.empty();
+              $('.load-movie-btn').addClass('show');
+              currentPage = 1;
+              lastPage = 1;
+
+              // clearSearch('clear');
+          }
+
+          // 🔹 load halaman berikutnya
+          loadMoreBtn.on('click', function () {
+              if (currentPage < lastPage) {
+                  currentPage++;
+                  loadMovies(currentPage, url, movieList, loadMoreBtn)
+                      .then(lp => lastPage = lp)
+                      .catch(console.error);
+              }
+          });
+
+          // Tooltip Logic (tetap sama)
+          let tooltipTimeout;
+
+          $(document).on('mouseenter', '.movie-card', function () {
+              clearTimeout(tooltipTimeout);
+              const card = $(this);
+              mouseEnterMovieCard(card);
+          });
+
+          $(document).on('mouseleave', '.movie-card', function () {
+              tooltipTimeout = setTimeout(() => {
+                mouseLeaveMovieCard();
+              }, 200);
+          });
+
+          $('#movie-tooltip').hover(
+              function () { clearTimeout(tooltipTimeout); },
+              function () {
+                  $(this).removeClass('show');
+                  $(this).find('.tooltip-video').empty();
+              }
+          );
+
+      }, 400); // tunggu 400ms setelah user berhenti mengetik
+  });
+
+  $('#clear-search').click(function (e) { 
+    e.preventDefault();
+    movieList.empty();
+    $('.load-movie-btn').addClass('show');
+    currentPage = 1;
+    lastPage = 1;
+    clearSearch('clear');
+  });
+
+
+  function clearSearch(act) {
+    if (act == 'show') {
+      $('.clear-search').removeClass('d-none');
+    } else {
+      $('.clear-search').addClass('d-none');
+      $('#search').val('');
+    }
+  }
+}

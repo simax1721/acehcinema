@@ -44,6 +44,23 @@ class MovieController extends Controller
         return response()->json($movies);
     }
 
+    function get_search(Request $request) {
+        $search = $request->query('search');
+
+        if ($search) {
+            $query = Movie::query();
+            $query->where('title', 'LIKE', '%'. $search . '%')->orWhere('actor', 'LIKE', '%'. $search . '%')->latest();
+
+
+            $movies = $query->paginate(15);
+
+            $movies->getCollection()->makeHidden(['dacast_embed']);
+            return response()->json($movies);
+        }
+
+        return response()->json(['data' => []]);
+    }
+
     public function get_show(Request $request, $id)
     {
         $movie = Movie::select( 'id', 'title', 'category', 'thumbnail', 'poster', 'trailer_dacast_embed', 'age', 'duration', 'description', 'release_date', 'actor', 'writter', 'producer', 'production', 'rating', 'views',)->findOrFail($id);

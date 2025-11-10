@@ -37,7 +37,7 @@
           <li class="nav-item"><a class="nav-link nav-link-costume nav-link-costume-menu" href="{{ url('/section-movie/fiction') }}">Fiksi</a></li>
           <li class="nav-item"><a class="nav-link nav-link-costume nav-link-costume-menu" href="{{ url('/section-movie/documentary') }}">Dokumentari</a></li>
           <li class="nav-item"><a class="nav-link nav-link-costume nav-link-costume-menu" href="#">Favoritku</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-costume" href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+          <li class="nav-item"><a class="nav-link nav-link-costume" href="{{ url('/search') }}"><i class="fa-solid fa-magnifying-glass"></i></a></li>
           <li class="nav-item"><a class="nav-link nav-link-costume" href="#"><i class="fa-regular fa-bell"></i></a></li>
 
           {{-- 🧑 Auth Area --}}

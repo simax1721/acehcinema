@@ -188,7 +188,8 @@ section.movies-list {
 }
 
 section.movies .movie-category h2,
-section.movies .movie-category i, section.movies-list h2 {
+section.movies .movie-category i, 
+section.movies-list h2 {
   color: var(--white-color);
   margin-bottom: 30px;
 }
@@ -640,6 +641,86 @@ input::placeholder {
   font-weight: bolder;
   color: var(--white-color);
 }
+
+section.search {
+  padding: 10px 50px;
+  margin-bottom: 60px;
+  color: var(--white-color);
+}
+
+section.search h2 {
+  margin-bottom: 30px;
+}
+
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /* max-width: 900px; */
+    margin: 0 auto;
+}
+
+.clear-search {
+    color: var(--white-color);
+    cursor: pointer;
+    margin-right: 16px;
+    transition: color 0.2s ease;
+}
+
+.clear-search:hover {
+    color: #ffffff;
+}
+
+.box-search {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    background-color: #ffffff22; /* putih transparan lembut */
+    border-radius: 999px;
+    padding: 8px 16px;
+}
+
+.box-search i {
+    color: var(--white-color);
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.box-search input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 15px;
+    width: 100%;
+    padding: 6px 0;
+}
+
+.box-search input::placeholder {
+    color: #aaa;
+    opacity: 0.8;
+}
+
+/* Efek fokus (opsional, bisa dihapus jika tidak perlu) */
+.box-search input:focus {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .search-wrapper {
+        max-width: 100%;
+    }
+
+    .clear-search {
+        margin-right: 10px;
+    }
+
+    .box-search {
+        padding: 6px 12px;
+    }
+}
+
 
 
 

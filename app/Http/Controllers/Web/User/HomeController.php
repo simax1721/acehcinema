@@ -31,4 +31,8 @@ class HomeController extends Controller
         
         return view('web.desktop.movie-watch');
     }
+
+    function get_search() {
+        return view('web.desktop.search');
+    }
 }

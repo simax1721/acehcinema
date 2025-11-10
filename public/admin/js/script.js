@@ -30,7 +30,7 @@ const Movie = {
         {data:'created_at',name:'created_at'},
         {data:'action',name:'action', orderable: false, searchable: false},
       ],
-      order: [[5, 'asc']]
+      order: [[5, 'desc']]
     });
 
     $('body').on('click', '#btn-create', function () {
