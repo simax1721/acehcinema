@@ -202,8 +202,20 @@ class MovieController extends Controller
         // return response()->json(['action' => $request->action]);
     }
 
-    function delete($id) {
-        
+    function delete_delete($id) {
+        $movie = Movie::findOrfail($id);
+
+        Movie::destroy($id);
+
+        $message = [
+            'title' => 'Movie',
+            'text' => 'Movie '. $movie['title'] .' telah dihapus!',
+            'icon' => 'info'
+        ];
+
+        return response()->json([
+            'message' => $message, 'data' => $movie
+        ]);
     }
 
     function get_showAdmin(Movie $movie) {

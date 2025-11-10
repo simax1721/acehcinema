@@ -82,6 +82,41 @@ const Movie = {
       });
     });
 
+    $('body').on('click', '#btn-delete', function () {
+    let id = $(this).data('id');
+    let token   = $("meta[name='csrf-token']").attr("content");
+    Swal.fire({
+      icon: 'warning',
+      title: 'Apakah Kamu Yakin?',
+      text: "ingin menghapus data ini!",
+      showCancelButton: true,
+      cancelButtonText: 'TIDAK',
+      confirmButtonText: 'YA, HAPUS!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        //fetch to delete data
+        $.ajax({
+          url: `/api/movies/delete/${id}`,
+          type: "DELETE",
+          cache: false,
+          headers: {
+            'Authorization': 'Bearer ' + token
+          },
+          success:function(res){ 
+            //show success message
+            sweetAlertNorm(res.message.title, res.message.text, res.message.icon);
+            //remove post on table
+            $('#dataTable').DataTable().ajax.reload();
+          },
+          error: function (error) { 
+            console.log(error);
+          }
+        });          
+      }
+    })
+
+    });
+
   },
 
   movieUpdate(token) {
